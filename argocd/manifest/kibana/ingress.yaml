@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+  name: kibana-ingress
+  namespace: logging
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kibana.entto.shop
+    http:
+      paths:
+      - backend:
+          service:
+            name: kibana-service
+            port:
+              number: 5601
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - kibana.entto.shop
+    secretName: kibana.entto.shop-tls
