@@ -8,6 +8,7 @@ resources:
 - ./fluentd/serviceaccount.yaml
 - ./fluentd/clusterrole.yaml
 - ./fluentd/clusterrolebinding.yaml
+- ./fluentd/configmap.yaml
 # elasticsearch
 - ./elasticsearch/deployment.yaml
 - ./elasticsearch/configmap.yaml
